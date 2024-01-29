@@ -13,7 +13,7 @@ This GitHub repository showcases an Apache Airflow-based data pipeline project f
 - **Astro CLI**: Utilizes Astro CLI for Apache Airflow interface.
 - **GCP Integration**: Employs Bucket and BigQuery for cloud data management.
 - **Python Packages and Versions**:
-  - Astro Runtime: `quay.io/astronomer/astro-runtime:8.8.0`
+  - Astro Runtime: `quay.io/astronomer/astro-runtime:8.8.0` 
   - Soda Core BigQuery: `soda-core-bigquery==3.0.45`
   - Soda Core Scientific: `soda-core-scientific==3.0.45`
   - dbt BigQuery: `dbt-bigquery==1.5.3`
@@ -22,5 +22,15 @@ This GitHub repository showcases an Apache Airflow-based data pipeline project f
 
 ## Usage
 Step-by-step guide on deploying the pipeline, including chaining stages and resolving common issues such as CSV file encoding and manual SQL table creation in GCP BigQuery.
+Useful Links:
+([Astro CLI](https://docs.astronomer.io/astro/cli/overview))
+[Soda.io](https://docs.soda.io)
+[Cosmos](https://www.astronomer.io/cosmos/)
 
+
+
+This project has been developed with the help of the Youtube Video ([Data Engineer Project: An end-to-end Airflow data pipeline with BigQuery, dbt Soda, and more!](https://www.youtube.com/watch?v=DzxtCxi4YaA)) by Marc Lamberti.
+
+
+- Aziz Bohra
 ---
