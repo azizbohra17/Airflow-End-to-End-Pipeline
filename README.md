@@ -1,4 +1,4 @@
-# Retail Rush: End-to-End Dynamo
+# Retail Rush: Data-Driven E-Commerce
 
 ## Overview
 This GitHub repository showcases an Apache Airflow-based data pipeline project for online retail, integrating GCP Bucket, BigQuery, Soda, dbt, and Metabase. It focuses on efficient data management through ingestion, transformation, stage-wise quality checks, and visualization.
