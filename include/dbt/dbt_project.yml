@@ -6,3 +6,5 @@ profile: 'retail'
 models:
   retail:
     materialized: table
+
+target-path: 'target'
