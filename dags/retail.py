@@ -1,7 +1,7 @@
 from airflow.decorators import dag, task
 from datetime import datetime
 from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesystemToGCSOperator
-from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateEmptyDatasetOperator
+from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateEmptyDatasetOperator, BigQueryExecuteQueryOperator
 from astro import sql as aql
 from astro.files import File
 from airflow.models.baseoperator import chain
@@ -57,6 +57,28 @@ def retail():
 
     # check_load()
 
+    # # Read SQL query from an external file
+    with open('/usr/local/airflow/include/dbt/models/sources/retail_country_table_creation.sql', 'r') as file:
+        sql_creation_query = file.read()
+
+    # Task for creating the table
+    create_country_table = BigQueryExecuteQueryOperator(
+        task_id='create_country_table',
+        sql=sql_creation_query,  # Adjust path as needed
+        gcp_conn_id='gcp',  # Use your correct GCP connection ID
+        use_legacy_sql=False,
+    )
+
+    with open('/usr/local/airflow/include/dbt/models/sources/retail_country_table_insertion.sql', 'r') as file:
+        sql_insertion_query = file.read()
+
+    # Task for inserting data into the table
+    insert_into_country_table = BigQueryExecuteQueryOperator(
+        task_id='insert_into_country_table',
+        sql=sql_insertion_query,  # Adjust path as needed
+        gcp_conn_id='gcp',  # Use your correct GCP connection ID
+        use_legacy_sql=False,
+    )
     transform = DbtTaskGroup(
         group_id='transform',
         project_config=DBT_PROJECT_CONFIG,
@@ -98,6 +120,8 @@ def retail():
         create_retail_dataset,
         gcs_to_raw,
         check_load(),
+        create_country_table,
+        insert_into_country_table,
         transform,
         check_transform(),
         report,
