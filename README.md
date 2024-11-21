@@ -9,6 +9,11 @@ This GitHub repository showcases an Apache Airflow-based data pipeline project f
 - **Data Transformation**: Leverages dbt for SQL-driven transformation.
 - **Visualization**: Implements Metabase dashboards for data analysis.
 
+<img width="1575" alt="image" src="https://github.com/user-attachments/assets/f6857647-d1cc-4313-a0e6-8b094b1b83df">
+
+<img width="1430" alt="image" src="https://github.com/user-attachments/assets/93413484-d48b-4ca1-b165-3727ba6bca70">
+
+
 ## Environment Setup
 - **Astro CLI**: Utilizes Astro CLI for Apache Airflow interface.
 - **GCP Integration**: Employs Bucket and BigQuery for cloud data management.
